@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h4>Hi @ViewBag.user.name!</h4>
+    @ViewBag.post
+    <form action="addPost" method="post">
+        <input type="text" name="comment" placeholder="Post something witty here..." style="width:350px"> <input type="submit" name="idea" value="Post!">
+    </form>
+    @{
+        foreach(var i in @ViewBag.allPost)
+        {
+            <hr>
+           <p><a href="user/@i.user.userid">@i.user.name</a> says:  @i.comment </p>
+           <p>
+               <a href="like/@i.postid">Like</a></p>
+                   
+               <p><a href="displayPost/@i.postid">@i.likedby.Count people</a> like this </p>
+               
+                    @if(@i.user.userid == @ViewBag.sesh)
+                    {
+                        <a href="delete/@i.postid">Delete</a>
+                    }
+                  
+            
+        }
+    }
+</body>
+</html>

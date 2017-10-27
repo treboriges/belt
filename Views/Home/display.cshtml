@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="../dashboard">Dashboard</a> <a href="../logout">Logout</a> <br>
+    @{
+        foreach(var i in @ViewBag.allPost)
+        {
+            <h4>@i.user.name says: @i.comment</h4>
+              }
+    }
+    
+            <p><strong>People who like this post:</strong></p>
+            <table>
+                <thead>
+                    <tr>
+                        <td><strong>Alias</strong></td>
+                        <td><strong>Name</strong></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        @{
+                            foreach(var i in @ViewBag.hi.likedpost)
+                            {
+                                <tr>
+                                <td><a href="/user/@i.user.userid">@i.user.alias</a></td>
+                            <td>@i.user.name</td>
+                            </tr>
+                            }
+                        }
+
+                            
+                        
+                    
+                    
+                </tbody>
+            </table>
+      
+</body>
+</html>

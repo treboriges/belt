@@ -1,0 +1,34 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h4>Registration</h4>
+<div>
+    @{
+        foreach(var error in ViewBag.errors)
+        {
+            if(@error.Errors.Count > 0)
+            {
+                <p>@error.Errors[0].ErrorMessage</p>
+        
+            }
+        }
+    }
+</div>@ViewBag.success
+<div>
+<form action="addUser" method="post">
+<p>Name <input type="text" name="name"></p>
+<p>Alias <input type="text" name="alias"></p>
+<p>Email <input type="text" name="email"></p>
+<p>Password <input type="text" name="password"></p>
+<p>Confirm Password <input type="text" name="c_password"></p>
+<input type="submit" name="Submit">
+</form>
+</div>
+<div><h4>Login</h4>
+@ViewBag.fail
+    <form action="loginUser" method="post">
+        <p>Email <input type="text" name="email"></p>
+        <p>Password <input type="text" name="password"></p>
+        <input type="submit" value="Log In">
+    </form>
+</div> 
